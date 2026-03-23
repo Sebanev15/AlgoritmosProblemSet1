@@ -1,4 +1,4 @@
-package ucu.edu.aed.tda;
+package org.example.Ejercicio17;
 
 import java.util.Comparator;
 import java.util.function.Predicate;

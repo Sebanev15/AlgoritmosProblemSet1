@@ -1,4 +1,4 @@
-package ucu.edu.aed.tda;
+package org.example.Ejercicio17;
 
 /**
  * Define un Tipo de Dato Abstracto (TDA) Cola genérica.
