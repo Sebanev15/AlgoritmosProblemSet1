@@ -1,4 +1,4 @@
-package ucu.edu.aed.utils;
+package org.example.Ejercicio17;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
