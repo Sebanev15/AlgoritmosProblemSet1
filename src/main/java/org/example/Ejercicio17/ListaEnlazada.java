@@ -133,6 +133,26 @@ public class ListaEnlazada<T> implements TDALista<T>
         }
         return null;
     }
+    public TDALista<T> ordenar(Comparator<T> comparator){
+        ListaEnlazada<T> listaOrdenada= new ListaEnlazada<>();
+
+        //faltan cosas
+
+        return listaOrdenada;
+    }
+    public int tamaño(){
+        return tamaño();
+    }
+    public boolean esVacio(){
+       
+        return true;
+    }
+    public void vaciar(){
     
 
+    }
 }
+
+    
+  
+
