@@ -33,7 +33,7 @@ public interface TDALista<T> {
      * @param elem el elemento a agregar
      * @throws IndexOutOfBoundsException si el índice está fuera de rango
      */
-    void agregar(int index, T elem);
+    void agregarConIndice(int index, T elem);
 
     /**
      * Obtiene el elemento almacenado en la posición indicada.
