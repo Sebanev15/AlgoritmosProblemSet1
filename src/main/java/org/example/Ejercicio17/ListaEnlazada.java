@@ -39,19 +39,19 @@ public class ListaEnlazada<T> implements TDALista<T>
     @Override
     public void agregarConIndice(int indice, T elemento)
     {
-        Nodo actual = this.head;
+        Nodo<T> actual = this.head;
         for (i = 0, i = indice - 2, i++)
         {
             actual = actual.siguiente;
         } 
         temporal = actual.siguiente;
-        actual.siguiente = new Nodo(elemento, temporal.siguiente)
+        actual.siguiente = new Nodo(elemento, temporal.siguiente);
     }
 
     @Override
     public T obtener(int index)
     {
-        Nodo actual = this.head;
+        Nodo<T> actual = this.head;
         for (i = 0, i = index - 1, i++)
         {
             actual = actual.siguiente;
@@ -62,7 +62,8 @@ public class ListaEnlazada<T> implements TDALista<T>
     @Override
     public T remover(int index)
     {
-        Nodo actual = this.head;
+        Nodo<T> actual = this.head;
+        int i;
         for (i = 0, i = index - 2, i++)
         {
             actual = actual.siguiente;
@@ -75,7 +76,7 @@ public class ListaEnlazada<T> implements TDALista<T>
     @Override
     public boolean remover(T elemento)
     {
-        Nodo actual = this.head;
+        Nodo<T> actual = this.head;
         do 
         {
             actual = actual.siguiente;
@@ -84,12 +85,12 @@ public class ListaEnlazada<T> implements TDALista<T>
 
         if (actual.dato != null)
         {
-            temporal = actual.siguiente;
+            Nodo<T> temporal = actual.siguiente;
             actual.siguiente = temporal.siguiente;
-            return temporal.dato; 
+            return (boolean) temporal.dato; 
         }
         else{
-            return false
+            return false;
         }
         
     }
