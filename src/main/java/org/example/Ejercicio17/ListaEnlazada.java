@@ -25,7 +25,7 @@ public class ListaEnlazada<T> implements TDALista<T>
         } 
         else 
         {
-            Nodo actual = this.head;
+            Nodo<T> actual = this.head;
             while (actual.siguiente != null) 
             {
                 actual = actual.siguiente;
@@ -39,20 +39,22 @@ public class ListaEnlazada<T> implements TDALista<T>
     @Override
     public void agregarConIndice(int indice, T elemento)
     {
+        int i ;
         Nodo<T> actual = this.head;
-        for (i = 0, i = indice - 2, i++)
+        for (  i = 0; i < indice -1; i++)
         {
             actual = actual.siguiente;
         } 
-        temporal = actual.siguiente;
-        actual.siguiente = new Nodo(elemento, temporal.siguiente);
+        Nodo<T>temporal = actual.siguiente;
+        actual.siguiente = new Nodo<T>(elemento, temporal.siguiente);
     }
 
     @Override
     public T obtener(int index)
     {
+        int i;
         Nodo<T> actual = this.head;
-        for (i = 0, i = index - 1, i++)
+        for (i = 0; i < index ; i++)
         {
             actual = actual.siguiente;
         }
@@ -64,11 +66,11 @@ public class ListaEnlazada<T> implements TDALista<T>
     {
         Nodo<T> actual = this.head;
         int i;
-        for (i = 0, i = index - 2, i++)
+        for (i = 0; i < index - 1; i++)
         {
             actual = actual.siguiente;
         }
-        temporal = actual.siguiente;
+        Nodo<T> temporal = actual.siguiente;
         actual.siguiente = temporal.siguiente;
         return temporal.dato; 
     }
@@ -87,14 +89,50 @@ public class ListaEnlazada<T> implements TDALista<T>
         {
             Nodo<T> temporal = actual.siguiente;
             actual.siguiente = temporal.siguiente;
-            return (boolean) temporal.dato; 
+            return true; 
         }
         else{
             return false;
         }
         
     }
-
+    public boolean contiene(T elemento){
+        Nodo<T> actual=this.head;
+        while (!actual.dato.equals(elemento) && !actual.dato.equals(null)) {
+            actual=actual.siguiente;   
+        } 
+        if (actual.dato.equals(elemento)){
+            return true;
+            
+        }
+        else {
+            return false;
+        }
+    }
+    public int indiceDe(T elem){
+        Nodo<T> actual= this.head;
+        int contador=0;
+        while (!actual.dato.equals(elem) && !actual.dato.equals(null)) {
+            actual=actual.siguiente;
+            contador++;
+        }
+        if (actual.dato.equals(elem)){
+            return contador;
+        }
+        else{
+            return -1;
+        }
+    }
+    public T buscar(Predicate<T> criterio){
+        Nodo<T> actual = head;
+        while (actual != null){
+            if (criterio.test(actual.dato)){
+                return actual.dato;
+            }
+            actual = actual.siguiente;
+        }
+        return null;
+    }
     
 
 }
