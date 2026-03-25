@@ -23,7 +23,6 @@ public interface TDACola<T> extends TDALista<T> {
      * @throws java.util.NoSuchElementException si la cola está vacía
      */
     T frente();
-
     /**
      * Inserta un elemento al final de la cola.
      *
