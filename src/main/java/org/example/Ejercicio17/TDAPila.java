@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package org.example.Ejercicio17;
-=======
  package org.example.Ejercicio17;
->>>>>>> 777b474570008d170067c6001e0a82ab294e22e2
 
 /**
  * Define un Tipo de Dato Abstracto (TDA) Pila genérica.
