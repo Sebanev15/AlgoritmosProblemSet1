@@ -1,5 +1,11 @@
-package org.example.Ejercicio17;
+ package org.example.Ejercicio17;
 
-public class Nodo {
-
+public class Nodo<T> {
+    public T dato;
+    public Nodo<T> siguiente;
+    public Nodo(T dato, Nodo<T> siguiente) {
+        this.dato = dato;
+        this.siguiente = siguiente;
+    }
+    //metodo equals que invoque el equals del dato tipo t.
 }
