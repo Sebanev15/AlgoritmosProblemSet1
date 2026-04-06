@@ -8,15 +8,24 @@ public class Conjunto<T extends Comparable<T>> extends ListaEnlazada<T> implemen
     public TDAConjunto<T> union(TDAConjunto<T> otrConjunto){
         TDAConjunto<T> resultado= new Conjunto<>();
         Nodo<T> nodoActual=this.head;
-
+            // Agrega los elementos del primer conjunto al resultado
         while (nodoActual!= null){
             resultado.agregar(nodoActual.dato);
             nodoActual=nodoActual.siguiente;
         }
+        Nodo<T> otroNodo= ((Conjunto<T>) otrConjunto).head;
+            // Agrega los elementos del segundo conjunto al resultado, evitando duplicados
+        while (otroNodo!= null){
+            if (!resultado.contiene(otroNodo.dato)){
+                resultado.agregar(otroNodo.dato);
+            }
+            otroNodo=otroNodo.siguiente;
 
 
-        return null;
+        }
+        return resultado;
     }
+    
     public TDAConjunto<T> interseccion(TDAConjunto<T> otrConjunto){
         TDAConjunto<T> resultado =new Conjunto<>();
         Nodo<T> nodoActual=this.head;
@@ -38,6 +47,16 @@ public class Conjunto<T extends Comparable<T>> extends ListaEnlazada<T> implemen
             nodoActual=nodoActual.siguiente;
         }
         return resultado;
+    }
+    public boolean esSubconjuntoDe(TDAConjunto<T> otrConjunto){
+        Nodo<T> nodoActual= this.head;
+        while (nodoActual!=null){
+            if(!otrConjunto.contiene(nodoActual.dato)){
+                return false;
+            }
+            nodoActual=nodoActual.siguiente;
+        }
+        return true;
     }
     
     
