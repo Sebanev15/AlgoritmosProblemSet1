@@ -55,8 +55,8 @@ public class RegistroSucursales {
         return registro.poneEnCola(sucursal);
     }
 
-    public boolean buscarSucursal(String sucursal){
-        return registro.contiene(sucursal);
+    public Nodo<String> buscarSucursal(String sucursal){
+        return registro.contieneNodo(sucursal);
     }
     
     public void quitarSucursal(String sucursal){
@@ -70,11 +70,15 @@ public class RegistroSucursales {
     }
     
     public void listarSucursales(){
-        Nodo<String> nodoActual = registro.frente;
+        Nodo<String> nodoActual = registro.devolverPrimero();
         while (nodoActual != null) {
             System.out.println(nodoActual.dato);
             nodoActual = nodoActual.siguiente;
         }
+    }
+
+    public int devolverTotal(){
+        return registro.devolverTamano();
     }
 
 }
