@@ -1,7 +1,6 @@
 package org.example.Ejercicio17;
 
-import java.util.Comparator;
-import java.util.function.Predicate;
+
 
 public class Cola<T> extends ListaEnlazada<T> implements TDACola<T>  {
     public Nodo<T> frente;

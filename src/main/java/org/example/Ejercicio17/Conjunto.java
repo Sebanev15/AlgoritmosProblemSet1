@@ -1,9 +1,7 @@
 package org.example.Ejercicio17;
 
 public class Conjunto<T extends Comparable<T>> extends ListaEnlazada<T> implements TDAConjunto<T>{
-    private ListaEnlazada<T> conjunto;
     public Conjunto() {
-        conjunto = new ListaEnlazada<>();
     }
     
     @Override
@@ -26,7 +24,8 @@ public class Conjunto<T extends Comparable<T>> extends ListaEnlazada<T> implemen
             if (otrConjunto.buscar(nodoActual.dato()) != null){
                 resultado.agregar(nodoActual.dato);
             }
-        }nodoActual=nodoActual.siguiente;
+            nodoActual=nodoActual.siguiente;
+        }
         return resultado;
     }
     public TDAConjunto<T> diferencia (TDAConjunto<T> otrConjunto){
@@ -36,7 +35,8 @@ public class Conjunto<T extends Comparable<T>> extends ListaEnlazada<T> implemen
             if (otrConjunto.buscar(nodoActual.dato())== null){
                 resultado.agregar(nodoActual.dato);
             }
-    }       nodoActual=nodoActual.siguiente;
+            nodoActual=nodoActual.siguiente;
+        }
         return resultado;
     }
     
