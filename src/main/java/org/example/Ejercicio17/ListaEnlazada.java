@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 public class ListaEnlazada<T> implements TDALista<T> 
 {
     
-    private Nodo<T> head;
+    protected Nodo<T> head;
     private int size;
 
     public ListaEnlazada() 
@@ -136,20 +136,35 @@ public class ListaEnlazada<T> implements TDALista<T>
     public TDALista<T> ordenar(Comparator<T> comparator){
         ListaEnlazada<T> listaOrdenada= new ListaEnlazada<>();
 
-        //faltan cosas
+
 
         return listaOrdenada;
     }
     public int tamaño(){
-        return tamaño();
+        int size = 0;
+
+        Nodo<T> actual = head;
+        if(actual==null){
+            return size;
+        }
+        size++;
+        while(actual.siguiente!=null){
+            size++;
+        }
+        return size;
     }
     public boolean esVacio(){
        
-        return true;
+        return (head == null);
     }
     public void vaciar(){
-    
+        Nodo<T> actual = head;
 
+        while (actual != null){
+            Nodo<T> temporal = actual.siguiente;
+            actual.siguiente = null;
+            actual = temporal;
+        }
     }
 }
 
