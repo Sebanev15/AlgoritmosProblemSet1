@@ -109,6 +109,19 @@ public class ListaEnlazada<T> implements TDALista<T>
             return false;
         }
     }
+    public Nodo<T> contieneNodo(T elemento){
+        Nodo<T> actual=this.head;
+        while (!actual.dato.equals(elemento) && !actual.dato.equals(null)) {
+            actual=actual.siguiente;   
+        } 
+        if (actual.dato.equals(elemento)){
+            return actual;
+            
+        }
+        else {
+            return null;
+        }
+    }
     public int indiceDe(T elem){
         Nodo<T> actual= this.head;
         int contador=0;
