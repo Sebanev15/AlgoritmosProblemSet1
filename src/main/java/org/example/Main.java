@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.ejercicio23.RegistroSucursales;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -13,5 +15,9 @@ public class Main {
             // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
             IO.println("i = " + i);
         }
+        RegistroSucursales registro = new RegistroSucursales();
+        //registro.listarSucursales();   
+        //System.out.println(registro.devolverTotal());
+        System.out.println(registro.buscarSucursal("Hong Kong").siguiente);
     }
 }
