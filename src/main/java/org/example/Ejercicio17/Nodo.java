@@ -10,8 +10,7 @@ public class Nodo<T> {
         this.siguiente = siguiente;
     }
     //metodo equals que invoque el equals del dato tipo t.
-    public Predicate<T> dato() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'dato'");
+    public T dato() {
+       return this.dato;
     }
 }

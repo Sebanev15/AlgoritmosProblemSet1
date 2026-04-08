@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Ejercicio17.Nodo;
+import org.example.Ejercicio17.Pila;
 import org.example.ejercicio23.RegistroSucursales;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -19,5 +21,16 @@ public class Main {
         //registro.listarSucursales();   
         //System.out.println(registro.devolverTotal());
         System.out.println(registro.buscarSucursal("Hong Kong").siguiente);
+
+
+        //pila
+        Pila<String> pila= new Pila<String>();
+        pila.mete("primer dato");
+        pila.mete("segundo dato");
+        pila.mete("tercer dato");
+        System.out.println(pila.tope());
+        System.out.println(pila.saca());
+        System.out.println(pila.tope());
+
     }
 }

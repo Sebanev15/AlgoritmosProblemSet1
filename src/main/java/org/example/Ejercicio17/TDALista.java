@@ -99,7 +99,7 @@ public interface TDALista<T> {
      * @return el primer elemento que cumple el criterio, o {@code null}
      *         si no existe ninguno
      */
-    T buscar(Predicate<T> criterio);
+    T buscar(T criterio);
 
     /**
      * Retorna una nueva lista con los elementos ordenados según el comparador dado.
