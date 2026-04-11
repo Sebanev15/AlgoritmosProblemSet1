@@ -207,7 +207,17 @@ public class ListaEnlazada<T> implements TDALista<T>
     nuevo.siguiente = actual.siguiente;
     actual.siguiente = nuevo;
     }
-    
+ 
+    public T buscar(T criterio){
+        Nodo<T> actual = head;
+        while (actual!=null) {
+            if (actual.dato==criterio){
+                return actual.dato;
+            }
+            actual = actual.siguiente;
+        }
+        return null;
+    }
 }
 
     
