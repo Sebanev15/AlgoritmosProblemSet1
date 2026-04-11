@@ -24,7 +24,14 @@ public class BibliotecaUCU {
     public boolean agregarEjemplares(int codigo, int cantidad){
         Predicate<NodoLibro> predicadoCodigo = n -> n.getCodigo()==codigo;
         NodoLibro actual = catalogo.buscar(predicadoCodigo);
+        if (actual == null){
+            return false;
+        }
         actual.cantidadEjemplares += cantidad;
         return true;
+    }
+
+    public boolean retirarLibro(int codigo){
+        
     }
 }
