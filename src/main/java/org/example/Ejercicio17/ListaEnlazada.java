@@ -136,6 +136,8 @@ public class ListaEnlazada<T> implements TDALista<T>
             return -1;
         }
     }
+    //Como quitaron el Predicate del TDA, hay que hace una que devuelva lo mismo 
+    //Que el TDA
     public T buscar(Predicate<T> criterio){
         Nodo<T> actual = head;
         while (actual != null){
@@ -207,11 +209,12 @@ public class ListaEnlazada<T> implements TDALista<T>
     nuevo.siguiente = actual.siguiente;
     actual.siguiente = nuevo;
     }
- 
+    //Ya habia una metodo buscar pero cambiaron la firma del TDA, por lo que agrege este para
+    //cumplir con la interfaz, si revertimos el cambio interfaz, podemos borrar este
     public T buscar(T criterio){
         Nodo<T> actual = head;
         while (actual!=null) {
-            if (actual.dato==criterio){
+            if (actual.dato.equals(criterio)){
                 return actual.dato;
             }
             actual = actual.siguiente;
