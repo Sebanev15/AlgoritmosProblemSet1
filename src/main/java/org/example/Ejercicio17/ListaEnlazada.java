@@ -76,7 +76,7 @@ public class ListaEnlazada<T> implements TDALista<T>
     }
 
     @Override
-    public boolean remover(T elemento)
+    public boolean remover(T elemento)//borra el siguiente, no el que queremos. 
     {
         Nodo<T> actual = this.head;
         do 

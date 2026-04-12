@@ -18,6 +18,13 @@ public class NodoLibro {
         return libro.codigo;
     }
 
+    public String getTitulo(){
+        if (libro.titulo!= null){
+            return libro.titulo;
+        }
+        throw new IllegalArgumentException("Titulo no valido");
+    }
+ 
     @Override
     public boolean equals(Object obj){
         if (this==obj) return true;
