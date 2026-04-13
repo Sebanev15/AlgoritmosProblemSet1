@@ -19,11 +19,14 @@ public class BibliotecaUCU {
         catalogo.agregar(libro);
     }
 
-    
-
-    public boolean agregarEjemplares(int codigo, int cantidad){
+    private NodoLibro buscarLibro(int codigo){
         Predicate<NodoLibro> predicadoCodigo = n -> n.getCodigo()==codigo;
         NodoLibro actual = catalogo.buscar(predicadoCodigo);
+        return actual;
+    }
+
+    public boolean agregarEjemplares(int codigo, int cantidad){
+        NodoLibro actual =buscarLibro(codigo);
         if (actual == null){
             return false;
         }
@@ -32,8 +35,7 @@ public class BibliotecaUCU {
     }
 
     public boolean retirarLibro(int codigo){
-        Predicate<NodoLibro> predicadoCodigo = n -> n.getCodigo()==codigo;
-        NodoLibro actual = catalogo.buscar(predicadoCodigo);
+        NodoLibro actual =buscarLibro(codigo);
         if (actual == null){
             return false;
         }
@@ -41,8 +43,7 @@ public class BibliotecaUCU {
     }
 
     public int consultarExistencias(int codigo)  {
-        Predicate<NodoLibro> predicadoCodigo = n -> n.getCodigo()==codigo;
-        NodoLibro actual = catalogo.buscar(predicadoCodigo);
+        NodoLibro actual =buscarLibro(codigo);
         if (actual != null) {
             return actual.cantidadEjemplares;
         }
