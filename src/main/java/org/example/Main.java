@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.Ejercicio17.Nodo;
+
 import org.example.Ejercicio17.Pila;
 import org.example.ejercicio23.RegistroSucursales;
 

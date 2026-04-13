@@ -99,16 +99,13 @@ public class ListaEnlazada<T> implements TDALista<T>
     @Override
     public boolean contiene(T elemento){
         Nodo<T> actual=this.head;
-        while (!actual.dato.equals(elemento) && !actual.dato.equals(null)) {
+        while (actual!= null) {
+            if (actual.dato.equals(elemento)){
+                return true;
+            }
             actual=actual.siguiente;   
         } 
-        if (actual.dato.equals(elemento)){
-            return true;
-            
-        }
-        else {
-            return false;
-        }
+        return false;
     }
     public Nodo<T> contieneNodo(T elemento){
         Nodo<T> actual=this.head;
