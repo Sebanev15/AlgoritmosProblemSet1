@@ -1,6 +1,6 @@
  package org.example.Ejercicio17;
 
-import java.util.function.Predicate;
+
 
 public class Nodo<T> {
     public T dato;
