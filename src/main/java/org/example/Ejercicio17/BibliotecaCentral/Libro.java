@@ -3,10 +3,10 @@ package org.example.Ejercicio17.BibliotecaCentral;
 public class Libro {
     //Agrego solo codigo y titulo a clase libro, porque precio y cantidad ejemplares no
     //parece ser responsabilidad de clase libro
-    public int codigo;
+    public String codigo;
     public String titulo;
     
-    public Libro(int codigo, String titulo){
+    public Libro(String codigo, String titulo){
         this.codigo = codigo;
         this.titulo = titulo;
     }

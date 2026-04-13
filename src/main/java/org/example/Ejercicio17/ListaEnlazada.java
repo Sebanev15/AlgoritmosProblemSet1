@@ -3,6 +3,8 @@ package org.example.Ejercicio17;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
+import org.example.Ejercicio17.BibliotecaCentral.NodoLibro;
+
 
 public class ListaEnlazada<T> implements TDALista<T> 
 {
@@ -105,8 +107,8 @@ public class ListaEnlazada<T> implements TDALista<T>
             }
             actual=actual.siguiente;   
         } 
-        return false;
-    }
+            return false;
+        }
     public Nodo<T> contieneNodo(T elemento){
         Nodo<T> actual=this.head;
         while (!actual.dato.equals(elemento) && !actual.dato.equals(null)) {
@@ -145,6 +147,7 @@ public class ListaEnlazada<T> implements TDALista<T>
         }
         return null;
     }
+
     public TDALista<T> ordenar(Comparator<T> comparator){
         ListaEnlazada<T> listaOrdenada= new ListaEnlazada<>();
         Nodo<T> actual = this.head;
@@ -160,7 +163,6 @@ public class ListaEnlazada<T> implements TDALista<T>
     }
     public int tamaño(){
         int size = 0;
-
         Nodo<T> actual = head;
         if(actual==null){
             return size;
@@ -168,9 +170,11 @@ public class ListaEnlazada<T> implements TDALista<T>
         size++;
         while(actual.siguiente!=null){
             size++;
+            actual =  actual.siguiente;
         }
         return size;
     }
+
     public boolean esVacio(){
        
         return (head == null);
