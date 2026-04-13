@@ -8,7 +8,7 @@ public class ListaEnlazada<T> implements TDALista<T>
 {
     
     protected Nodo<T> head;
-    private int size;
+    protected int size;
 
     public ListaEnlazada() 
     {
@@ -96,6 +96,7 @@ public class ListaEnlazada<T> implements TDALista<T>
         }
         
     }
+    @Override
     public boolean contiene(T elemento){
         Nodo<T> actual=this.head;
         while (!actual.dato.equals(elemento) && !actual.dato.equals(null)) {
