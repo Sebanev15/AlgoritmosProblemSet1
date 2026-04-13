@@ -76,7 +76,7 @@ public class ListaEnlazada<T> implements TDALista<T>
     }
 
     @Override
-    public boolean remover(T elemento)
+    public boolean remover(T elemento)//borra el siguiente, no el que queremos. 
     {
         Nodo<T> actual = this.head;
         do 
@@ -137,6 +137,7 @@ public class ListaEnlazada<T> implements TDALista<T>
             return -1;
         }
     }
+
     public T buscar(Predicate<T> criterio){
         Nodo<T> actual = head;
         while (actual != null){
@@ -149,7 +150,13 @@ public class ListaEnlazada<T> implements TDALista<T>
     }
     public TDALista<T> ordenar(Comparator<T> comparator){
         ListaEnlazada<T> listaOrdenada= new ListaEnlazada<>();
+        Nodo<T> actual = this.head;
 
+        while (actual != null)
+        {
+            insertarOrdenado(listaOrdenada, actual.dato, comparator);
+            actual = actual.siguiente;
+        }
 
 
         return listaOrdenada;
@@ -180,6 +187,29 @@ public class ListaEnlazada<T> implements TDALista<T>
             actual = temporal;
         }
     }
+    //Funcion auxiliar para el ordenar
+    private void insertarOrdenado(ListaEnlazada<T> lista, T elemento, Comparator<T> comparator){   
+    Nodo<T> nuevo = new Nodo<>(elemento, null);
+
+    if (lista.head == null || comparator.compare(elemento, lista.head.dato) < 0)
+    {
+        nuevo.siguiente = lista.head;
+        lista.head = nuevo;
+        return;
+    }
+
+    Nodo<T> actual = lista.head;
+
+    while (actual.siguiente != null &&
+           comparator.compare(elemento, actual.siguiente.dato) >= 0)
+    {
+        actual = actual.siguiente;
+    }
+
+    nuevo.siguiente = actual.siguiente;
+    actual.siguiente = nuevo;
+    }
+
 }
 
     
