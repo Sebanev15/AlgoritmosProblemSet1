@@ -70,17 +70,17 @@ public class BibliotecaUCU {
             throw new IllegalArgumentException("codigo invalido/no encontrado");
         }
     }
-    //No esta terminado, es totalmente provicional
-    //No estoy seguro a que se refiere la letra con listar
-    //Falta devolver el stock
-    public TDALista<NodoLibro> ordenarPorTitulo(){
-        return catalogo.ordenar((l1, l2) -> l1.getTitulo().compareTo(l2.getTitulo()));
+
+    public void ordenarPorTitulo(){
+        TDALista<NodoLibro> resultado = catalogo.ordenar((l1, l2) -> l1.getTitulo().compareTo(l2.getTitulo()));
+        int tamaño = resultado.tamaño();
+        for (int i = 0; i < tamaño; i++){
+            NodoLibro actual = resultado.obtener(i);
+            System.out.println("-" + actual.getTitulo() + ", " + actual.getStock());
+        }
     }
 
-    /*public void ordenarPorTitulo(){
-        
-        catalogo = catalogo.ordenar((l1, l2) -> l1.getTitulo().compareTo(l2.getTitulo()));
-    }*/
+
 
     public void listar(){
         int tamaño = catalogo.tamaño();
