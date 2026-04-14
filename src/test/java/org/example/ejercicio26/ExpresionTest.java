@@ -1,93 +1,61 @@
 package org.example.ejercicio26;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.example.Ejercicio17.ListaEnlazada;
-import org.example.Ejercicio17.TDALista;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 public class ExpresionTest {
 
-    private TDALista<Character> crearLista(String texto){
-        TDALista<Character> nuevaLista = new ListaEnlazada<Character>();
-        for (Character c : texto.toCharArray()) {
-            nuevaLista.agregar(c);
-        }
-        return nuevaLista;
-    }
-
-
+    List<Character> validInputWithValidCharacters = List.of('{', '{', '}', '{', '}', '}');
+    List<Character> invalidInputWithValidCharacters = List.of('{', '}', '}', '{', '}', '}');
+    List<Character> invalidInputWithInvalidCharacters = List.of('{', '}', 'a', 'b', 'c', '}');
+    List<Character> validInputWithInvalidCharacters = List.of('{', 'a', 'b', 'c', '}', '{', 'd', 'e', 'f', '}');
     @Test
-    void testListaVacia() {
-        Expresion expresion = new Expresion();
-        TDALista<Character> lista = new ListaEnlazada<>();
-
-        assertFalse(expresion.controlCorchetes(lista));
+    public void controlCorchetesWithValidInput(){
+        assertTrue(Expresion.controlCorchetes(validInputWithValidCharacters));
     }
 
     @Test
-    public void testCorchetesCorrectos(){
-        Expresion expresion = new Expresion();
-        TDALista<Character> lista = crearLista("{}");
-
-        assertTrue(expresion.controlCorchetes(lista));
+    public void controlCorchetesWithInvalidInputWithValidCharacters(){
+        assertFalse(Expresion.controlCorchetes(invalidInputWithValidCharacters));
     }
 
     @Test
-    public void testCorchetesAnidadosCorrectos(){
-        Expresion expresion = new Expresion();
-        TDALista<Character> lista = crearLista("{{{}}}");
+    public void controlCorchetesWithInvalidInputWithInvalidCharacters(){
+        assertFalse(Expresion.controlCorchetes(invalidInputWithInvalidCharacters));
+    }
 
-        assertTrue(expresion.controlCorchetes(lista));
+     @Test
+    public void controlCorchetesWithValidInputWithInvalidCharacters(){
+        assertTrue(Expresion.controlCorchetes(validInputWithInvalidCharacters));
     }
 
     @Test
-    public void testFaltaCerrar(){
-        Expresion expresion = new Expresion();
-        TDALista<Character> lista = crearLista("{{}");
-
-        assertFalse(expresion.controlCorchetes(lista));
+    public void controlCorchetesWithEmptyList(){
+        assertTrue(Expresion.controlCorchetes(List.of()));
     }
 
     @Test
-    public void testFaltaAbrir(){
-        Expresion expresion = new Expresion();
-        TDALista<Character> lista = crearLista("{}}");
-
-        assertFalse(expresion.controlCorchetes(lista));
+    public void controlCorchetesWithOnlyOpeningBracket(){
+        assertFalse(Expresion.controlCorchetes(List.of('{')));
     }
 
     @Test
-    public void testCaracterInvalido(){
-        Expresion expresion = new Expresion();
-        TDALista<Character> lista = crearLista("{a}");
-
-        assertFalse(expresion.controlCorchetes(lista));
+    public void controlCorchetesWithOnlyCloseBracket(){
+        assertFalse(Expresion.controlCorchetes(List.of('}')));
     }
 
     @Test
-    public void testSoloApertura(){
-        Expresion expresion = new Expresion();
-        TDALista<Character> lista = crearLista("{{{{");
-
-        assertFalse(expresion.controlCorchetes(lista));
+    public void controlCorchetesStartingWithCloseBracket(){
+        assertFalse(Expresion.controlCorchetes(List.of('}', '{', '}', '{')));
     }
 
     @Test
-    public void testSoloCierre(){
-        Expresion expresion = new Expresion();
-        TDALista<Character> lista = crearLista("}}}}");
-
-        assertFalse(expresion.controlCorchetes(lista));
-    }
-
-    @Test
-    public void testListaNull(){
-        Expresion expresion = new Expresion();
-
-        assertThrows( IllegalArgumentException.class,
-            () -> expresion.controlCorchetes(null));
+    public void controlCorchetesWithOnlyInvalidCharacters(){
+        assertTrue(Expresion.controlCorchetes(List.of('a', 'b', 'c', 'd')));
     }
 }

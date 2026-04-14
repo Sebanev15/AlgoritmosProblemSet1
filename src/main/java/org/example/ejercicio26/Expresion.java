@@ -1,41 +1,24 @@
 package org.example.ejercicio26;
-
-import org.example.Ejercicio17.Pila;
-import org.example.Ejercicio17.TDALista;
+import java.util.List;
+import java.util.Stack;
 
 public class Expresion {
-    //Consideramos una lista vacia como no valida
-    //La lista vacio solo puede contener "{" o "}"
-    public boolean controlCorchetes(TDALista<Character>listaDeEntrada){
-        if (listaDeEntrada == null){
-            throw new IllegalArgumentException("La lista no puede ser null");
-        }
-
-        if (listaDeEntrada.esVacio()){
-            return false;
-        }
-
-        Pila<Integer> pila = new Pila<Integer>();
-        int size = listaDeEntrada.tamaño();
-        int i;
-        for (i = 0; i<size; i++){
-            Character actual =listaDeEntrada.obtener(i);
-            if (actual == '{'){
-                pila.mete(1);
+    public static boolean controlCorchetes(List<Character> listaDeEntrada){
+        Stack<Character> corchetesPila = new Stack<>();
+        int indice = 0;
+        while(indice<listaDeEntrada.size()){
+            Character caracterActual = listaDeEntrada.get(indice);
+            if (caracterActual.equals('{')){
+                corchetesPila.push(caracterActual);
             }
-            else if (actual == '}'){
-                if (!pila.esVacio()){
-                    pila.saca();
-                }
-                else{
+            if (caracterActual.equals('}')){
+                if (corchetesPila.isEmpty()){
                     return false;
                 }
+                corchetesPila.pop();
             }
-            else{
-                return false;
-            }
+            indice++;
         }
-        return pila.esVacio();
+        return corchetesPila.isEmpty();
     }
-
 }
