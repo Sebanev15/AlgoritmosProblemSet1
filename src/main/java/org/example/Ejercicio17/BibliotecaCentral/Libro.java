@@ -19,6 +19,6 @@ public class Libro {
 
         Libro otroLibro = (Libro) obj;
 
-        return codigo == otroLibro.codigo;
+        return codigo.equals(otroLibro.codigo);
     }
 }

@@ -13,6 +13,10 @@ public class BibliotecaUCU {
         this.catalogo = new ListaEnlazada<NodoLibro>();
     }
 
+    public void limpiarCatalogo() {
+    this.catalogo = new ListaEnlazada<>();
+    }
+
     public static BibliotecaUCU getBiblioteca()
     {
         if (biblioteca == null){
