@@ -5,24 +5,25 @@ public class Pila <T> extends ListaEnlazada<T> implements TDAPila<T> {
     public int size =0;
 
     @Override
-    public T tope() {
+    public T tope() throws java.util.NoSuchElementException {
         if (head != null){
             return head.dato;
         }
-        return null;
+        throw new java.util.NoSuchElementException();
     }
 
     @Override
-    public T saca() {
-        T elementoEliminar= tope();
-            Nodo<T> nodoEliminado= head;
-            
-        
-         if(head.siguiente!=null){
-            head= head.siguiente;
-            nodoEliminado.siguiente=null;
+    public T saca() throws java.util.NoSuchElementException {
+        if (head == null) {
+        throw new java.util.NoSuchElementException();
         }
-        
+
+        T elementoEliminar= tope();
+        Nodo<T> nodoEliminado= head;
+
+        head= head.siguiente;
+        nodoEliminado.siguiente=null;
+
         return elementoEliminar;
 
         
