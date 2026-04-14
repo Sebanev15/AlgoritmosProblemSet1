@@ -14,7 +14,6 @@ public class Main {
         RegistroSucursales registro = new RegistroSucursales();
         //registro.listarSucursales();   
         //System.out.println(registro.devolverTotal());
-        System.out.println(registro.buscarSucursal("Hong Kong").siguiente.dato);
         System.out.println(registro.buscarSucursal("Hong Kong").siguiente);
 
 
@@ -26,5 +25,20 @@ public class Main {
         System.out.println(pila.tope());
         System.out.println(pila.saca());
         System.out.println(pila.tope());
+        
+        //Prueba que efectivamente borre el ultimo dato
+        Pila<String> pila1 = new Pila<String>();
+        pila1.mete("unico dato");
+        System.out.println(pila1.tope());
+        System.out.println(pila1.saca());
+
+        try {
+            Pila<String> pila2 = new Pila<String>();
+            pila1.mete("unico dato");
+            System.out.println(pila2.saca());
+        } catch (java.util.NoSuchElementException e) {
+            System.out.println("Tira Excepcion");
+        }
+
     }
 }

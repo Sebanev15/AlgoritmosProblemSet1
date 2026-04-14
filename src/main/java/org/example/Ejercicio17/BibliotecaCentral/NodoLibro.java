@@ -5,17 +5,42 @@ package org.example.Ejercicio17.BibliotecaCentral;
 public class NodoLibro {
     
     public Libro libro;
-    public float precio;
-    public int cantidadEjemplares;
+    private float precio;
+    private int cantidadEjemplares;
 
-    public NodoLibro(String titulo, int codigo, float precio){
+    public NodoLibro(String titulo, String codigo, float precio, int cantidad){
         this.libro = new Libro(codigo, titulo);
-        this.precio = precio;
-        this.cantidadEjemplares = 0;
+        this.precio =(precio <= 0) ? 0 : precio;
+        this.cantidadEjemplares = (cantidad <= 0) ? 0 : cantidad;
     }
 
-    public int getCodigo(){
+    public String getCodigo(){
         return libro.codigo;
+    }
+
+    public int getStock(){
+        return cantidadEjemplares;
+    }
+
+    public int modifyStock(int cantidad){
+        if (cantidadEjemplares+cantidad < 0){
+            cantidadEjemplares = 0;
+        }
+        else{
+            cantidadEjemplares= cantidadEjemplares + cantidad;
+        }
+        return cantidadEjemplares;
+    }
+
+    public float getPrecio(){
+        return precio;
+    }
+
+    public float modifyPrice(int precio){
+        if (0 <= precio){
+            this.precio= precio;
+        }
+        return this.precio;
     }
 
     public String getTitulo(){
