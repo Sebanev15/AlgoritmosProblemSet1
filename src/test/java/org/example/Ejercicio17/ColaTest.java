@@ -47,4 +47,34 @@ public class ColaTest {
 
         assertEquals(20, cola.frente());
     }
+    
+    @Test
+    public void testExcepcionFrente() {
+        Cola<Integer> cola = new Cola<>();
+
+        assertThrows(java.util.NoSuchElementException.class, () -> {
+            cola.frente();
+        });
+    }
+
+    @Test
+    public void testExcepcionQuita() {
+        Cola<Integer> cola = new Cola<>();
+
+        assertThrows(java.util.NoSuchElementException.class, () -> {
+            cola.quitaDeCola();
+        });
+    }
+
+    @Test
+    public void testInsertarDespuesDeVaciar() {
+        Cola<Integer> cola = new Cola<>();
+
+        cola.poneEnCola(10);
+        cola.quitaDeCola();   // cola queda vacía
+
+        cola.poneEnCola(20);  // insertar nuevamente
+
+        assertEquals(20, cola.frente());
+    }
 }

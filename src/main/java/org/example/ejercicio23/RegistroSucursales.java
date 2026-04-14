@@ -62,7 +62,7 @@ public class RegistroSucursales {
     public void quitarSucursal(String sucursal){
         registro.remover(sucursal);
         vaciarArchivo();
-        Nodo<String> nodoActual = registro.frente;
+        Nodo<String> nodoActual = registro.devolverPrimero();
         while (nodoActual != null) {
             agregarLinea(nodoActual.dato);
             nodoActual = nodoActual.siguiente;
