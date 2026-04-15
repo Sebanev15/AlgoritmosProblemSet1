@@ -1,4 +1,8 @@
-package org.example.Ejercicio17;
+package org.example.ejercicio24;
+
+import org.example.Ejercicio17.ListaEnlazada;
+import org.example.Ejercicio17.Nodo;
+import org.example.Ejercicio17.TDAConjunto;
 
 public class Conjunto<T extends Comparable<T>> extends ListaEnlazada<T> implements TDAConjunto<T>{
     public Conjunto() {
