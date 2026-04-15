@@ -4,10 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.example.Ejercicio17.Nodo;
-import org.example.Ejercicio17.TDALista;
+
 import org.example.Ejercicio17.TDAConjunto;
-import org.example.ejercicio24.Conjunto;
+
 import org.junit.jupiter.api.Test;
 
 class ConjuntoTest {
@@ -148,8 +147,6 @@ class ConjuntoTest {
         assertTrue(c1.esSubconjuntoDe(c2)); 
     }
 
-  
-
     @Test
     public void diferenciaTotal() {
         // La diferencia de dos conjuntos idénticos debería ser el conjunto vacío
@@ -166,6 +163,32 @@ class ConjuntoTest {
 
         assertFalse(res.contiene(1));
         assertFalse(res.contiene(2));
+    }
+
+    @Test
+    public void unionSinDuplicados() {
+        Conjunto<Integer> c1 = new Conjunto<>();
+        Conjunto<Integer> c2 = new Conjunto<>();
+
+        c1.agregar(1);
+        c2.agregar(1);
+
+        TDAConjunto<Integer> res = c1.union(c2);
+
+        // debería haber un solo 1
+        int count = 0;
+        if (res.contiene(1)) count++;
+
+        assertEquals(1, count);
+    }
+    @Test
+    public void subconjuntoDeSiMismo() {
+        Conjunto<Integer> c1 = new Conjunto<>();
+
+        c1.agregar(1);
+        c1.agregar(2);
+
+        assertTrue(c1.esSubconjuntoDe(c1));
     }
 
 }

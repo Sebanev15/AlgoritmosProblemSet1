@@ -1,10 +1,10 @@
 package org.example.ejercicio24;
 
-public class TAlumno23  implements Comparable<TAlumno23>{
+public class TAlumno24  implements Comparable<TAlumno24>{
      private int cedula;
         private String nombre;
         private String apellido;
-    public TAlumno23(int cedula, String nombre, String apellido) {
+    public TAlumno24(int cedula, String nombre, String apellido) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -12,7 +12,7 @@ public class TAlumno23  implements Comparable<TAlumno23>{
     public int getCedula() {
         return cedula;
     }
-    public int compareTo(TAlumno23 otro){       // letra pide que los conjuntos deben de estar ordenados
+    public int compareTo(TAlumno24 otro){       // letra pide que los conjuntos deben de estar ordenados
         return Integer.compare(this.cedula, otro.cedula);
     }
     @Override
@@ -24,10 +24,10 @@ public class TAlumno23  implements Comparable<TAlumno23>{
         if (this == obj){
             return true;
         }
-        if(!(obj instanceof TAlumno23)){
+        if(!(obj instanceof TAlumno24)){
             return false;
         }
-        TAlumno23 otro = (TAlumno23) obj;
+        TAlumno24 otro = (TAlumno24) obj;
         return this.cedula == otro.cedula;
     }
 
