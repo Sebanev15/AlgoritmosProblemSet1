@@ -34,7 +34,7 @@ public class Conjunto<T extends Comparable<T>> extends ListaEnlazada<T> implemen
         TDAConjunto<T> resultado =new Conjunto<>();
         Nodo<T> nodoActual=this.head;
         while(nodoActual!=null){
-            T datoActual = nodoActual.dato();
+            T datoActual = nodoActual.dato;
             if (otrConjunto.buscar(x -> x.equals(datoActual)) != null){
                 resultado.agregar(nodoActual.dato);
             }
@@ -46,7 +46,7 @@ public class Conjunto<T extends Comparable<T>> extends ListaEnlazada<T> implemen
         TDAConjunto<T> resultado= new Conjunto<>();
         Nodo<T> nodoActual=this.head;
         while (nodoActual!=null){
-            T datoActual = nodoActual.dato();
+            T datoActual = nodoActual.dato;
             if (otrConjunto.buscar(x -> x.equals(datoActual))== null){
                 resultado.agregar(nodoActual.dato);
             }

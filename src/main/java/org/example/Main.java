@@ -1,8 +1,10 @@
 package org.example;
 
-
 import org.example.Ejercicio17.Pila;
+import org.example.Ejercicio17.TDAConjunto;
 import org.example.ejercicio23.RegistroSucursales;
+import org.example.ejercicio24.Conjunto;
+import org.example.ejercicio24.TAlumno23;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -39,6 +41,37 @@ public class Main {
         } catch (java.util.NoSuchElementException e) {
             System.out.println("Tira Excepcion");
         }
+        // ejercicio 24
+        
 
+
+        // Crear conjuntos
+        Conjunto<TAlumno23> AED1 = new Conjunto<>();
+        Conjunto<TAlumno23> PF = new Conjunto<>();
+
+        // Crear alumnos
+        TAlumno23 a1 = new TAlumno23(1234, "Juan", "Perez");
+        TAlumno23 a2 = new TAlumno23(2345, "Ana", "Gomez");
+        TAlumno23 a3 = new TAlumno23(3456, "Luis", "Martinez");
+
+        // Agregar alumnos
+        AED1.agregar(a1);
+        AED1.agregar(a2);
+
+        PF.agregar(a2); // está en ambos
+        PF.agregar(a3);
+
+        // Unión
+        System.out.println("UNION:");
+        TDAConjunto<TAlumno23> union = AED1.union(PF);
+        ((Conjunto<TAlumno23>) union).imprimir();
+
+        // Intersección
+        System.out.println("\nINTERSECCION:");
+        TDAConjunto<TAlumno23> inter = AED1.interseccion(PF);
+        ((Conjunto<TAlumno23>) inter).imprimir();
     }
 }
+
+
+    

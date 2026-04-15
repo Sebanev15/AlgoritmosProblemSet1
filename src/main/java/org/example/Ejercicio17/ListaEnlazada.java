@@ -3,7 +3,7 @@ package org.example.Ejercicio17;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
-import org.example.Ejercicio17.BibliotecaCentral.NodoLibro;
+
 
 
 public class ListaEnlazada<T> implements TDALista<T> 
@@ -266,7 +266,14 @@ public class ListaEnlazada<T> implements TDALista<T>
     nuevo.siguiente = actual.siguiente;
     actual.siguiente = nuevo;
     }
+    public void imprimir() {
+    Nodo<T> actual = head;
 
+    while (actual != null) {
+        System.out.println(actual.dato);
+        actual = actual.siguiente;
+    }
+}
 }
 
     

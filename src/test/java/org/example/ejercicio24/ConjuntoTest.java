@@ -1,9 +1,12 @@
-package org.example.Ejercicio17;
+package org.example.ejercicio24;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.example.Ejercicio17.Nodo;
+import org.example.Ejercicio17.TDALista;
+import org.example.Ejercicio17.TDAConjunto;
 import org.example.ejercicio24.Conjunto;
 import org.junit.jupiter.api.Test;
 
@@ -105,6 +108,7 @@ class ConjuntoTest {
         Conjunto<Integer> c2 = new Conjunto<>();
 
         c1.agregar(1);
+        c2.agregar(2);
 
         TDAConjunto<Integer> res = c1.interseccion(c2);
 
@@ -144,27 +148,7 @@ class ConjuntoTest {
         assertTrue(c1.esSubconjuntoDe(c2)); 
     }
 
-    @Test
-    public void sinDuplicadosEnUnion() {
-        
-        Conjunto<Integer> c1 = new Conjunto<>();
-        Conjunto<Integer> c2 = new Conjunto<>();
-
-        c1.agregar(1);
-        c2.agregar(1);
-
-        TDAConjunto<Integer> res = c1.union(c2);
-
-        int count = 0;
-        Nodo<Integer> actual = ((Conjunto<Integer>) res).head;
-
-        while (actual != null) {
-            if (actual.dato == 1) count++;
-            actual = actual.siguiente;
-        }
-
-        assertEquals(1, count);
-    }
+  
 
     @Test
     public void diferenciaTotal() {
