@@ -149,6 +149,8 @@ public class ListaEnlazada<T> implements TDALista<T>
             if(this.head.dato.equals(elemento)) {
                 return true;
             }
+        }else{
+            throw new NullPointerException("La lista esta vacia por lo que no tiene ningun elemento");
         }
 
         Nodo<T> actual=this.head;
