@@ -1,8 +1,9 @@
 package org.example;
 
-
 import org.example.Ejercicio17.Pila;
+import org.example.Ejercicio17.TDAConjunto;
 import org.example.ejercicio23.RegistroSucursales;
+import org.example.Ejercicio24.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -39,6 +40,37 @@ public class Main {
         } catch (java.util.NoSuchElementException e) {
             System.out.println("Tira Excepcion");
         }
+        // ejercicio 24
+        
 
+
+        // Crear conjuntos
+        Conjunto<TAlumno24> AED1 = new Conjunto<>();
+        Conjunto<TAlumno24> PF = new Conjunto<>();
+
+        // Crear alumnos
+        TAlumno24 a1 = new TAlumno24(1234, "Juan", "Perez");
+        TAlumno24 a2 = new TAlumno24(2345, "Ana", "Gomez");
+        TAlumno24 a3 = new TAlumno24(3456, "Luis", "Martinez");
+
+        // Agregar alumnos
+        AED1.agregar(a1);
+        AED1.agregar(a2);
+
+        PF.agregar(a2); // está en ambos
+        PF.agregar(a3);
+
+        // Unión
+        System.out.println("UNION:");
+        TDAConjunto<TAlumno24> union = AED1.union(PF);
+        ((Conjunto<TAlumno24>) union).imprimir();
+
+        // Intersección
+        System.out.println("\nINTERSECCION:");
+        TDAConjunto<TAlumno24> inter = AED1.interseccion(PF);
+        ((Conjunto<TAlumno24>) inter).imprimir();
     }
 }
+
+
+    

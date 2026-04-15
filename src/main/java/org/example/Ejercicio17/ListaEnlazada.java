@@ -44,22 +44,44 @@ public class ListaEnlazada<T> implements TDALista<T>
     {
         int i ;
         Nodo<T> actual = this.head;
+
+        if(indice==0){
+            this.head = new Nodo<T>(elemento, this.head);
+            this.size++;
+            return;
+        }
         for (  i = 0; i < indice -1; i++)
         {
-            actual = actual.siguiente;
+            if(actual.siguiente!=null){
+                actual = actual.siguiente;
+            }else{
+                throw new IndexOutOfBoundsException("Indice fuera de rango");
+            }
         } 
         Nodo<T>temporal = actual.siguiente;
-        actual.siguiente = new Nodo<T>(elemento, temporal.siguiente);
+        actual.siguiente = new Nodo<T>(elemento, temporal);
+        this.size++;
     }
 
     @Override
     public T obtener(int index)
     {
         int i;
+
+        if(index==0){
+            if(this.head!=null){
+                return this.head.dato;
+            }
+            throw new NullPointerException("La lista esta vacia por lo que no tiene ningun elemento");
+        }
         Nodo<T> actual = this.head;
-        for (i = 0; i < index ; i++)
+        for (i = 0; i < index; i++)
         {
-            actual = actual.siguiente;
+            if(actual.siguiente!=null){
+                actual = actual.siguiente;
+            }else{
+                throw new IndexOutOfBoundsException("Indice fuera de rango");
+            }
         }
         return actual.dato;
     }
@@ -67,41 +89,71 @@ public class ListaEnlazada<T> implements TDALista<T>
     @Override
     public T remover(int index)
     {
-        Nodo<T> actual = this.head;
+
         int i;
-        for (i = 0; i < index - 1; i++)
-        {
-            actual = actual.siguiente;
+        if(index==0){
+            if(this.head!=null){
+                T datoEliminar = this.head.dato;
+                head = head.siguiente;
+                return datoEliminar;
+            }
+            throw new NullPointerException("La lista esta vacia por lo que no tiene ningun elemento");
         }
-        Nodo<T> temporal = actual.siguiente;
-        actual.siguiente = temporal.siguiente;
-        return temporal.dato; 
+        Nodo<T> actual = this.head;
+        for (i = 0; i < index -1; i++)
+        {
+            if(actual.siguiente!=null){
+                actual = actual.siguiente;
+            }else{
+                throw new IndexOutOfBoundsException("Indice fuera de rango");
+            }
+        }
+        if(actual.siguiente!=null){
+            Nodo<T> temporal = actual.siguiente;
+            actual.siguiente = temporal.siguiente;
+            return temporal.dato;
+        }else{
+            throw new IndexOutOfBoundsException("Indice fuera de rango");
+        }
+
     }
 
     @Override
-    public boolean remover(T elemento)//borra el siguiente, no el que queremos. 
+    public boolean remover(T elemento)
     {
+        if(this.head!=null){
+            if(this.head.dato.equals(elemento)){
+                this.head = this.head.siguiente;
+                this.size--;
+                return true;
+            }
+        }else{
+            throw new NullPointerException("La lista esta vacia por lo que no tiene ningun elemento");
+        }
+
         Nodo<T> actual = this.head;
-        do 
-        {
+
+        while (actual.siguiente != null) {
+            if (actual.siguiente.dato.equals(elemento)) {
+                actual.siguiente = actual.siguiente.siguiente;
+                this.size--;
+                return true;
+            }
             actual = actual.siguiente;
         }
-        while(actual.dato != elemento);
 
-        if (actual.dato != null)
-        {
-            Nodo<T> temporal = actual.siguiente;
-            actual.siguiente = temporal.siguiente;
-            return true; 
-        }
-        else{
-            return false;
-        }
-        
+        return false;
     }
     @Override
     public boolean contiene(T elemento){
+        if(this.head!=null){
+            if(this.head.dato.equals(elemento)) {
+                return true;
+            }
+        }
+
         Nodo<T> actual=this.head;
+
         while (actual!= null) {
             if (actual.dato.equals(elemento)){
                 return true;
@@ -109,33 +161,40 @@ public class ListaEnlazada<T> implements TDALista<T>
             actual=actual.siguiente;   
         } 
             return false;
-        }
+    }
     public Nodo<T> contieneNodo(T elemento){
+        if(this.head!=null){
+            if(this.head.dato.equals(elemento)) {
+                return this.head;
+            }
+        }else{
+            throw new NullPointerException("La lista esta vacia por lo que no tiene ningun elemento");
+        }
+
         Nodo<T> actual=this.head;
-        while (!actual.dato.equals(elemento) && !actual.dato.equals(null)) {
-            actual=actual.siguiente;   
-        } 
-        if (actual.dato.equals(elemento)){
-            return actual;
-            
+
+        while (actual!= null) {
+            if (actual.dato.equals(elemento)){
+                return actual;
+            }
+            actual=actual.siguiente;
         }
-        else {
-            return null;
-        }
+        return null;
     }
     public int indiceDe(T elem){
+        if(this.head==null){
+            throw new NullPointerException("La lista esta vacia por lo que no tiene ningun elemento");
+        }
         Nodo<T> actual= this.head;
         int contador=0;
-        while (!actual.dato.equals(elem) && !actual.dato.equals(null)) {
+        while (actual != null) {
+            if(actual.dato.equals(elem)){
+                return contador;
+            }
             actual=actual.siguiente;
             contador++;
         }
-        if (actual.dato.equals(elem)){
-            return contador;
-        }
-        else{
-            return -1;
-        }
+        return -1;
     }
 
     public T buscar(Predicate<T> criterio){
@@ -158,8 +217,6 @@ public class ListaEnlazada<T> implements TDALista<T>
             insertarOrdenado(listaOrdenada, actual.dato, comparator);
             actual = actual.siguiente;
         }
-
-
         return listaOrdenada;
     }
     public int tamaño(){
@@ -177,16 +234,13 @@ public class ListaEnlazada<T> implements TDALista<T>
     }
 
     public boolean esVacio(){
-       
         return (head == null);
     }
     public void vaciar(){
-        Nodo<T> actual = head;
-
-        while (actual != null){
-            Nodo<T> temporal = actual.siguiente;
-            actual.siguiente = null;
-            actual = temporal;
+        if(this.head!=null) {
+            while (head != null) {
+                head = head.siguiente;
+            }
         }
     }
     //Funcion auxiliar para el ordenar
@@ -211,7 +265,14 @@ public class ListaEnlazada<T> implements TDALista<T>
     nuevo.siguiente = actual.siguiente;
     actual.siguiente = nuevo;
     }
+    public void imprimir() {
+    Nodo<T> actual = head;
 
+    while (actual != null) {
+        System.out.println(actual.dato);
+        actual = actual.siguiente;
+    }
+}
 }
 
     
