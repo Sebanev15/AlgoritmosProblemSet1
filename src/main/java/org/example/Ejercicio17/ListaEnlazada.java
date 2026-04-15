@@ -118,7 +118,7 @@ public class ListaEnlazada<T> implements TDALista<T>
     }
 
     @Override
-    public boolean remover(T elemento)//borra el siguiente, no el que queremos. 
+    public boolean remover(T elemento)
     {
         if(this.head!=null){
             if(this.head.dato.equals(elemento)){
