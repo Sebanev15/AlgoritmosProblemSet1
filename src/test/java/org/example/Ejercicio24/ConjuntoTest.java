@@ -1,9 +1,11 @@
-package org.example.Ejercicio17;
+package org.example.Ejercicio24;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.example.Ejercicio17.Nodo;
+import org.example.Ejercicio17.TDAConjunto;
 import org.junit.jupiter.api.Test;
 
 class ConjuntoTest {
@@ -155,7 +157,7 @@ class ConjuntoTest {
         TDAConjunto<Integer> res = c1.union(c2);
 
         int count = 0;
-        Nodo<Integer> actual = ((Conjunto<Integer>) res).head;
+        Nodo<Integer> actual = ((Conjunto<Integer>) res).getHead();
 
         while (actual != null) {
             if (actual.dato == 1) count++;

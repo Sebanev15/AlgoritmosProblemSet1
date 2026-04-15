@@ -3,9 +3,6 @@ package org.example.Ejercicio17;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
-import org.example.Ejercicio17.BibliotecaCentral.NodoLibro;
-
-
 public class ListaEnlazada<T> implements TDALista<T> 
 {
     
@@ -36,6 +33,10 @@ public class ListaEnlazada<T> implements TDALista<T>
             
         }
         this.size ++;
+    }
+
+    public Nodo<T> getHead(){
+        return head;
     }
 
     @Override

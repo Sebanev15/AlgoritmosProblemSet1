@@ -9,10 +9,18 @@ import java.io.InputStreamReader;
 import org.example.ejercicio7.Ejercicio7;
 
 public class AquisitonManager {
-        InputStream inputStream = Ejercicio7.class.getClassLoader().getResourceAsStream("adquisiciones.txt"); //El archivo .txt debe estar en resources
-        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-        BibliotecaUCU biblioteca = BibliotecaUCU.getBiblioteca();
+        public BufferedReader br;
+        public BibliotecaUCU biblioteca;
         
+        public AquisitonManager(){
+            br = new BufferedReader(new InputStreamReader(Ejercicio7.class.getClassLoader().getResourceAsStream("adquisiciones.txt")));
+            biblioteca = BibliotecaUCU.getBiblioteca();
+        }
+        public AquisitonManager(BufferedReader br, BibliotecaUCU biblioteca){
+            this.br = br;
+            this.biblioteca = biblioteca;
+        }
+
     public void adquirirTodo(){
         try {
             String actual = br.readLine();//CODIGO_LIBRO, TITULO_LIBRO, PRECIO_REPOSICION, CANTIDA
