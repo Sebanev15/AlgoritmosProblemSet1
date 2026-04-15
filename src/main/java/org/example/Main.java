@@ -3,7 +3,7 @@ package org.example;
 import org.example.Ejercicio17.Pila;
 import org.example.Ejercicio17.TDAConjunto;
 import org.example.ejercicio23.RegistroSucursales;
-import org.example.Ejercicio24.*;
+import org.example.ejercicio24.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.

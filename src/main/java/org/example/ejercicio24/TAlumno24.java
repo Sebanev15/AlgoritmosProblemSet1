@@ -1,4 +1,4 @@
-package org.example.Ejercicio24;
+package org.example.ejercicio24;
 
 public class TAlumno24  implements Comparable<TAlumno24>{
      private int cedula;
